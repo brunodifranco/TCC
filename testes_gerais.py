@@ -14,6 +14,6 @@ def shapiro_teste(X):
 def LjungBox(X):
     from statsmodels.stats.diagnostic import acorr_ljungbox
     import pandas as pd
-    a = acorr_ljungbox(X, return_df=False)[0]
-    b = acorr_ljungbox(X, return_df=False)[1]
+    a = acorr_ljungbox(X)[0]
+    b = acorr_ljungbox(X)[1]
     return pd.DataFrame({'lb_stat': a, 'lb_pvalue': b})              
