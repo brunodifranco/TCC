@@ -12,6 +12,9 @@ def shapiro_teste(X):
 
 #Ljung-Box        
 def LjungBox(X):
+    __requires__= 'statsmodels==0.10.2'
+    import pkg_resources
+    pkg_resources.require('statsmodels==0.10.2')
     from statsmodels.stats.diagnostic import acorr_ljungbox
     import pandas as pd
     a = acorr_ljungbox(X)[0]
