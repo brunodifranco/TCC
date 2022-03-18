@@ -35,6 +35,7 @@ def histograma(X,y,salvar_figura=0,a=10,b=5):
         plt.show()
         
 def grafico_csd(X,y,salvar_figura=0,a=10,b=5):
+    import matplotlib.pyplot as plt
     # X são os valores propriamente do gráfico, ex: df[i]
     # y é o rótulo, ex: 'i'
     if salvar_figura==0:
@@ -46,6 +47,7 @@ def grafico_csd(X,y,salvar_figura=0,a=10,b=5):
         plt.axhline(X.mean() + 2*X.std(),color='g') 
         plt.axhline(X.mean() - 2*X.std(),color='g')  
         plt.ylim([-0.015, 0.12])
+        plt.yticks([-0.01,0.00,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.10,0.11])
         plt.show()
     elif salvar_figura==1:
         plt.figure(figsize=(a,b)) 
@@ -57,4 +59,4 @@ def grafico_csd(X,y,salvar_figura=0,a=10,b=5):
         plt.axhline(X.mean() - 2*X.std(),color='g')  
         plt.ylim([-0.015, 0.12])
         plt.savefig('{y}.png'.format(y=y))
-        plt.show()        
+        plt.show()      
