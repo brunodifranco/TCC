@@ -2,6 +2,8 @@
 
 import matplotlib.pyplot as plt
 import pandas as pd
+from scipy.stats import norm
+import numpy as np
 
 def fazer_graficos(X,y,salvar_figura=0,a=10,b=5):
     # X são os valores propriamente do gráfico, ex: df[i]
@@ -25,12 +27,22 @@ def histograma(X,y,salvar_figura=0,a=10,b=5):
     # y é o rótulo, ex: histograma de i
     if salvar_figura==0:
         plt.figure(figsize=(a,b)) 
-        plt.hist(X)
+        mu, std = norm.fit(X)
+        plt.hist(X,density=True)
+        xmin, xmax = plt.xlim()
+        x = np.linspace(xmin, xmax, 100)
+        p = norm.pdf(x, mu, std)
+        plt.plot(x, p, 'k', linewidth=2)
         plt.ylabel(y, fontsize=11)
         plt.show()
     elif salvar_figura==1:
-        plt.figure(figsize=(10,5)) 
-        plt.hist(X)
+        plt.figure(figsize=(a,b)) 
+        mu, std = norm.fit(X)
+        plt.hist(X,density=True)
+        xmin, xmax = plt.xlim()
+        x = np.linspace(xmin, xmax, 100)
+        p = norm.pdf(x, mu, std)
+        plt.plot(x, p, 'k', linewidth=2)
         plt.ylabel(y, fontsize=11)
         plt.savefig('{y}.png'.format(y=y))
         plt.show()
