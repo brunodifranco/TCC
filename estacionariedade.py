@@ -12,7 +12,7 @@ def dickey_fuller(X,y):
     print('Valores Críticos:')
     for key, valor in teste_adf[4].items():
         print('\t%s: %.3f' % (key, valor))
-    print(f'Resultado: A série de retornos{"não" if teste_adf[1] > 0.05 else ""} é estacionária')
+    print(f'Resultado: A série{"não" if teste_adf[1] > 0.05 else ""} é estacionária')
     print('\n')
     
 #KPSS   
@@ -28,5 +28,5 @@ def kpss_teste(X,y):
     print('Valores Críticos:')
     for key, valor in teste_kpss[3].items():
         print('\t%s: %.3f' % (key, valor))
-    print(f'Resultado: A série de retornos{"não" if teste_kpss[1] < 0.05 else ""} é estacionária')
+    print(f'Resultado: A série{"não" if teste_kpss[1] < 0.05 else ""} é estacionária')
     print('\n')  
