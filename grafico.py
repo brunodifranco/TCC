@@ -54,22 +54,19 @@ def csd_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
-        plt.xlabel('Tempo', fontsize=11)
+        plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
-        plt.axhline(X.mean() + 2*X.std(),color='g') 
-        plt.axhline(X.mean() - 2*X.std(),color='g')  
-        plt.ylim([-0.015, 0.12])
-        plt.yticks([-0.01,0.00,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.10,0.11])
+        plt.axhline(X.mean() + 2*X.std(),color='g') # linha horizontal com o limite superior
+        plt.ylim([X.min()*-1.1, X.max()*1.1])
         plt.show()
     elif salvar_figura==1:
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
-        plt.xlabel('Tempo', fontsize=11)
+        plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
-        plt.axhline(X.mean() + 2*X.std(),color='g') 
-        plt.axhline(X.mean() - 2*X.std(),color='g')  
-        plt.ylim([-0.015, 0.12])
+        plt.axhline(X.mean() + 2*X.std(),color='g') # linha horizontal com o limite superior
+        plt.ylim([X.min()*-1.1, X.max()*1.1])
         plt.savefig('{y}.png'.format(y=y))
         plt.show()
         
@@ -80,21 +77,18 @@ def csd_non_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
-        plt.xlabel('Tempo', fontsize=11)
+        plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
-        plt.axhline(X.quantile(0.95),color='g') 
-        plt.axhline(X.quantile(0.05),color='g')  
-        plt.ylim([-0.015, 0.12])
-        plt.yticks([-0.01,0.00,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.10,0.11])
+        plt.axhline(X.quantile(0.90),color='g') # linha horizontal com o limite superior
+        plt.ylim([X.min()*-1.1, X.max()*1.1])
         plt.show()
     elif salvar_figura==1:
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
-        plt.xlabel('Tempo', fontsize=11)
+        plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
-        plt.axhline(X.quantile(0.95),color='g') 
-        plt.axhline(X.quantile(0.05),color='g')  
-        plt.ylim([-0.015, 0.12])
+        plt.axhline(X.quantile(0.90),color='g') # linha horizontal com o limite superior
+        plt.ylim([X.min()*-0.5, X.max()*1.1])
         plt.savefig('{y}.png'.format(y=y))
-        plt.show()           
+        plt.show()               
