@@ -1,8 +1,9 @@
 # Módulo estacionariedade
+import warnings
+from statsmodels.tsa.stattools import adfuller, kpss
 
 #Dickey-Fuller
 def dickey_fuller(X,y):
-    from statsmodels.tsa.stattools import adfuller
     teste_adf = adfuller(X)
     # X são os valores usados pro teste, ex: df[i].values
     # y é o rótulo, ex: i
@@ -17,8 +18,6 @@ def dickey_fuller(X,y):
     
 #KPSS   
 def kpss_teste(X,y):
-    from statsmodels.tsa.stattools import kpss
-    import warnings
     warnings.filterwarnings('ignore')
     teste_kpss = kpss(X)
     print('{y}'.format(y=y))

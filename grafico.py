@@ -12,39 +12,31 @@ def fazer_graficos(X,y,salvar_figura=0,a=10,b=5):
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
-        plt.xlabel('Tempo', fontsize=11)
+        plt.xlabel('Time', fontsize=11)
         plt.show()
     elif salvar_figura==1:
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
-        plt.xlabel('Tempo', fontsize=11)
-        plt.savefig('{y}.png'.format(y=y))
+        plt.xlabel('Time', fontsize=11)
+        plt.savefig('{y}.pdf'.format(y=y),bbox_inches='tight')
         plt.show() 
           
-def histograma(X,y,salvar_figura=0,a=10,b=5):
+def histograma(X,y,salvar_figura=0,a=10,b=5,bins=25):
     # X são os valores propriamente do gráfico, ex: df[i]
     # y é o rótulo, ex: histograma de i
     if salvar_figura==0:
-        plt.figure(figsize=(a,b)) 
-        mu, std = norm.fit(X)
-        plt.hist(X,density=True)
-        xmin, xmax = plt.xlim()
-        x = np.linspace(xmin, xmax, 100)
-        p = norm.pdf(x, mu, std)
-        plt.plot(x, p, 'k', linewidth=2)
-        plt.ylabel(y, fontsize=11)
+        fig, ax = plt.subplots(figsize = (a,b))
+        X.plot(kind = "hist", density = True, bins=bins)
+        X.plot(kind = "kde")
+        ax.set_xlabel(y, fontsize=11)
         plt.show()
     elif salvar_figura==1:
-        plt.figure(figsize=(a,b)) 
-        mu, std = norm.fit(X)
-        plt.hist(X,density=True)
-        xmin, xmax = plt.xlim()
-        x = np.linspace(xmin, xmax, 100)
-        p = norm.pdf(x, mu, std)
-        plt.plot(x, p, 'k', linewidth=2)
-        plt.ylabel(y, fontsize=11)
-        plt.savefig('{y}.png'.format(y=y))
+        fig, ax = plt.subplots(figsize = (a,b))
+        X.plot(kind = "hist", density = True, bins=bins)
+        X.plot(kind = "kde")
+        ax.set_xlabel(y, fontsize=11)
+        plt.savefig('{y}.pdf'.format(y=y),bbox_inches='tight')
         plt.show()
         
 def csd_parametric(X,y,salvar_figura=0,a=10,b=5):
@@ -57,7 +49,6 @@ def csd_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
         plt.axhline(X.mean() + 2*X.std(),color='g') # linha horizontal com o limite superior
-        plt.ylim([X.min()*-1.1, X.max()*1.1])
         plt.show()
     elif salvar_figura==1:
         plt.figure(figsize=(a,b)) 
@@ -66,8 +57,7 @@ def csd_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
         plt.axhline(X.mean() + 2*X.std(),color='g') # linha horizontal com o limite superior
-        plt.ylim([X.min()*-1.1, X.max()*1.1])
-        plt.savefig('{y}.png'.format(y=y))
+        plt.savefig('{y}.pdf'.format(y=y),bbox_inches='tight')
         plt.show()
         
 def csd_non_parametric(X,y,salvar_figura=0,a=10,b=5):
@@ -79,8 +69,8 @@ def csd_non_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.ylabel(y, fontsize=11)
         plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
-        plt.axhline(X.quantile(0.90),color='g') # linha horizontal com o limite superior
-        plt.ylim([X.min()*-1.1, X.max()*1.1])
+        plt.axhline(X.quantile(0.95),color='g') # linha horizontal com o limite superior
+        plt.axhline(X.quantile(0.05),color='g') # linha horizontal com o limite inferior
         plt.show()
     elif salvar_figura==1:
         plt.figure(figsize=(a,b)) 
@@ -88,7 +78,7 @@ def csd_non_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.ylabel(y, fontsize=11)
         plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
-        plt.axhline(X.quantile(0.90),color='g') # linha horizontal com o limite superior
-        plt.ylim([X.min()*-0.5, X.max()*1.1])
-        plt.savefig('{y}.png'.format(y=y))
+        plt.axhline(X.quantile(0.95),color='g') # linha horizontal com o limite superior
+        plt.axhline(X.quantile(0.05),color='g') # linha horizontal com o limite inferior
+        plt.savefig('{y}.pdf'.format(y=y),bbox_inches='tight')
         plt.show()               

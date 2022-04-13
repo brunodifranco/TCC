@@ -93,15 +93,18 @@ def limite_parametrico(X,coluna):
     return(df_abnormal_vol_parametric)
 
 # Limite não paramétrico
-def limite_nao_parametrico(X,coluna,Y):
+def limite_nao_parametrico(X,coluna,Y,Z):
     '''
     Essa função retorna o limite não paramétrico da volatilidade;
     X é o DataFrame com as volatililidades;
-    Y é o percentil do limite (ex:0.90);
+    Y é o percentil do limite superior (ex:0.95);
+    Y é o percentil do limite inferior (ex:0.05);
     coluna é o nome da coluna do DataFrame onde estão as volatilidades.
     '''
     upper_limit_non_parametric = X.quantile(Y)
-    print('Upper Limit Non Parametric = {}'.format(float(upper_limit_non_parametric.values)))
-    df_abnormal_vol_non_parametric = X.loc[((X[coluna] > float(upper_limit_non_parametric)))]
+    lower_limit_non_parametric = X.quantile(Z)
+    
+    print('Upper Limit Non Parametric = {}'.format(float(upper_limit_non_parametric.values)),'|','Lower Limit Non Parametric  = {}'.format(float(lower_limit_non_parametric.values)))
+    df_abnormal_vol_non_parametric = X.loc[((X[coluna] > float(upper_limit_non_parametric))) | ((X[coluna] < float(lower_limit_non_parametric)))]
     print(df_abnormal_vol_non_parametric.count())
     return(df_abnormal_vol_non_parametric)
