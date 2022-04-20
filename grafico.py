@@ -84,27 +84,22 @@ def csd_non_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.show() 
         
 def grafico_pvalor(X,y,salvar_figura=0,a=10,b=5):
-    # X são os valores propriamente do gráfico, ex: df[i]
-    # y é o rótulo, ex: 'i'
     if salvar_figura==0:
         plt.figure(figsize=(a,b)) 
         plt.plot(X, '--bo')
         plt.ylabel(y, fontsize=11)
         plt.xlabel('Lags', fontsize=11)
-        plt.axhline(0.01,color='gray')
-        plt.axhline(0.05,color='g')
-        plt.axhline(0.10,color='purple')
-        plt.yticks([0.01,0.05,0.10,0.30,0.5,0.8])     
+        plt.axhline(0.05,color='g',linestyle='dashed')
+        plt.yticks([0.05,0.15,0.30,0.45,0.60,0.75,0.90])  
+        plt.ylim(0.005)
         plt.show()
     elif salvar_figura==1:
         plt.figure(figsize=(a,b)) 
         plt.plot(X, '--bo')
         plt.ylabel(y, fontsize=11)
         plt.xlabel('Lags', fontsize=11)
-        plt.axhline(0.01,color='gray')
-        plt.axhline(0.05,color='g')
-        plt.axhline(0.10,color='purple')
-        plt.yticks([0.01,0.05,0.10,0.30,0.5,0.8]) 
+        plt.axhline(0.05,color='g',linestyle='dashed')
+        plt.yticks([0.05,0.15,0.30,0.45,0.60,0.75,0.90]) 
+        plt.ylim(0.005)
         plt.savefig('{y}.pdf'.format(y=y),bbox_inches='tight')
-        plt.show()        
-        
+        plt.show()    
