@@ -49,6 +49,7 @@ def csd_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
         plt.axhline(X.mean() + 2*X.std(),color='g') # linha horizontal com o limite superior
+        plt.axhline(X.mean() - 2*X.std(),color='g') # linha horizontal com o limite inferior
         plt.show()
     elif salvar_figura==1:
         plt.figure(figsize=(a,b)) 
@@ -57,6 +58,7 @@ def csd_parametric(X,y,salvar_figura=0,a=10,b=5):
         plt.xlabel('Time', fontsize=11)
         plt.axhline(X.mean(),color='r') # linha horizontal com a média
         plt.axhline(X.mean() + 2*X.std(),color='g') # linha horizontal com o limite superior
+        plt.axhline(X.mean() - 2*X.std(),color='g') # linha horizontal com o limite inferior
         plt.savefig('{y}.pdf'.format(y=y),bbox_inches='tight')
         plt.show()
         
