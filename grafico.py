@@ -6,7 +6,7 @@ from scipy.stats import norm
 import numpy as np
 
 def graph(X,y,save_figure=0,a=10,b=5):
-    if salvar_figura==0:
+    if save_figure==0:
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
@@ -21,7 +21,7 @@ def graph(X,y,save_figure=0,a=10,b=5):
         plt.show() 
           
 def histogram(X,y,save_figure=0,a=10,b=5,bins=25):
-    if salvar_figura==0:
+    if save_figure==0:
         fig, ax = plt.subplots(figsize = (a,b))
         X.plot(kind = "hist", density = True, bins=bins)
         X.plot(kind = "kde")
@@ -36,7 +36,7 @@ def histogram(X,y,save_figure=0,a=10,b=5,bins=25):
         plt.show()
         
 def csd_parametric(X,y,save_figure=0,a=10,b=5):
-    if salvar_figura==0:
+    if save_figure==0:
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
@@ -57,7 +57,7 @@ def csd_parametric(X,y,save_figure=0,a=10,b=5):
         plt.show()
         
 def csd_non_parametric(X,y,save_figure=0,a=10,b=5):
-    if salvar_figura==0:
+    if save_figure==0:
         plt.figure(figsize=(a,b)) 
         plt.plot(X)
         plt.ylabel(y, fontsize=11)
@@ -78,7 +78,7 @@ def csd_non_parametric(X,y,save_figure=0,a=10,b=5):
         plt.show() 
         
 def graph_pvalue(X,y,save_figure=0,a=10,b=5):
-    if salvar_figura==0:
+    if save_figure==0:
         plt.figure(figsize=(a,b)) 
         plt.plot(X, '--bo')
         plt.ylabel(y, fontsize=11)
