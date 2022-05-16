@@ -60,7 +60,7 @@ def news_volatility(df_abnormal_vol,df_news):
         lista1.append(str(df_abnormal_vol.index[i]).rstrip('00:00:00').strip())    
     df_news1 = []   
     for i in lista1:
-        df_news1.append(df_noticias.filter(like='{}'.format(i), axis=0))
+        df_news1.append(df_news.filter(like='{}'.format(i), axis=0))
     df_news1 = pd.concat(df_news1)
     return(df_news1)
 
